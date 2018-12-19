@@ -28,6 +28,7 @@ function connectDatabase($servername, $dbname, $username, $password)
         return $conn;
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
+        return false;
     }
 
 }
