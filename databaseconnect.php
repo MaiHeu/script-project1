@@ -6,22 +6,23 @@
  * Connects to database
  */
 
-$servername = "localhost";
-$username = "";
-$password ="";
-$dbname="fi2017_hekrki";
-
-/**
- * @param $servername
- * @param $dbname
- * @param $username
- * @param $password
- * @return PDO
+/** $servername $servername = "localhost";
+ * $username = "root";
+ * $password ="";
+ * $dbname="fi2017_hekrki";
  */
-function connectDatabase($servername, $dbname, $username, $password)
+
+//Konstanten für die Datenbank Verbindung
+define("DB_HOST", "localhost");
+define("DB_USER", "dbuser");
+define("DB_PASSWORD", "1234");
+define("DB_NAME", "fi2017_hekrki");
+
+
+function connectDatabase()
 {
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn = new PDO('mysql:host=.DB_HOST;dbname=DB_NAME', DB_USER, DB_PASSWORD);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
