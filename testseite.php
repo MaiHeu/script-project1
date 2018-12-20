@@ -9,4 +9,4 @@
 include_once  'utilities.php';
 
 getInterestById(1);
-//printInterests(1);
+printInterests(1);

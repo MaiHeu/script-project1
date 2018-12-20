@@ -21,6 +21,11 @@ function getInterestById ($id){
 
     $result = $conn -> query($queryGetInterests);
     echo '<pre>'; print_r($result); echo '</pre>';
+    foreach ($conn -> query($queryGetInterests) as $row){
+        print $row['Interesse']."\t";
+        print $row['User']."\t";
+        print $row['Bezeichnung']."\t"."<br />";
+    }
 }
 
 

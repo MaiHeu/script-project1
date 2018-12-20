@@ -14,15 +14,15 @@
 
 //Konstanten für die Datenbank Verbindung
 define("DB_HOST", "localhost");
-define("DB_USER", "dbuser");
-define("DB_PASSWORD", "1234");
+define("DB_USER", "root");
+define("DB_PASSWORD", "");
 define("DB_NAME", "fi2017_hekrki");
 
 
 function connectDatabase()
 {
     try {
-        $conn = new PDO('mysql:host=.DB_HOST;dbname=DB_NAME', DB_USER, DB_PASSWORD);
+        $conn = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
