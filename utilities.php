@@ -32,11 +32,11 @@ function printInterests(){
     $conn = connectDatabase();
 
     foreach ($conn -> query($queryBezeichnung) as $row){
-        
+
     }
     $result = $conn -> query($queryBezeichnung);
 
-
+    $conn = null;
     //echo '<pre>'; print_r($result); echo '</pre>';
 
     /**TODO
