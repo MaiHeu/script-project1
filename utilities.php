@@ -10,34 +10,34 @@ include_once 'databaseconnect.php';
 
 $id = 1;
 
-function getInterestById ($id){
+function getUserInterestById ($id){
     //Query um festzustellen, welche Interessen $id bereits ausgewählt hat
-    $queryGetInterests = "SELECT userinteressen.User, userinteressen.Interesse, interessen.Bezeichnung
+    $queryGetInterests = "SELECT userinteressen.Interesse
                           FROM userinteressen
-                          INNER JOIN interessen ON (userinteressen.Interesse = interessen.InteressenID)
                           WHERE userinteressen.User = '$id'";
-
     $conn = connectDatabase();
-
-    $result = $conn -> query($queryGetInterests);
-    echo '<pre>'; print_r($result); echo '</pre>';
+    $save = array();
     foreach ($conn -> query($queryGetInterests) as $row){
-        print $row['Interesse']."\t";
-        print $row['User']."\t";
-        print $row['Bezeichnung']."\t"."<br />";
+        $save += $row;
     }
+    $conn = null;
+    return $save;
 }
 
-
-function printInterests($id){
+function printInterests(){
     //Query um alle vorhandenen Interessen aufzulisten
-    $queryBezeichnung = "SELECT Bezeichnung
+    $queryBezeichnung = "SELECT interessen.Bezeichnung, Interessen.InteressenID
                          FROM interessen";
 
     $conn = connectDatabase();
 
+    foreach ($conn -> query($queryBezeichnung) as $row){
+        
+    }
     $result = $conn -> query($queryBezeichnung);
-    echo '<pre>'; print_r($result); echo '</pre>';
+
+
+    //echo '<pre>'; print_r($result); echo '</pre>';
 
     /**TODO
      * -Select from interessen
