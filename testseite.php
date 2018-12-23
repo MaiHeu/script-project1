@@ -8,5 +8,6 @@
 
 include_once  'utilities.php';
 
-getInterestById(1);
-printInterests(1);
+getUserInterestById(1);
+printInterests(0, false);
+printInterests(1, true);
