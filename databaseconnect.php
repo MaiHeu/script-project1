@@ -6,12 +6,6 @@
  * Connects to database
  */
 
-/** $servername $servername = "localhost";
- * $username = "root";
- * $password ="";
- * $dbname="fi2017_hekrki";
- */
-
 //Konstanten für die Datenbank Verbindung
 define("DB_HOST", "localhost");
 define("DB_USER", "root");

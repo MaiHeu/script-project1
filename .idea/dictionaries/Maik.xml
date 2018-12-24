@@ -2,10 +2,15 @@
   <dictionary name="Maik">
     <words>
       <w>benutzer</w>
+      <w>databaseconnect</w>
       <w>datenbankdaten</w>
+      <w>datenbankobjekt</w>
       <w>dbname</w>
       <w>hekrki</w>
       <w>interessen</w>
+      <w>precheck</w>
+      <w>userinteressen</w>
+      <w>userinterest</w>
     </words>
   </dictionary>
 </component>
