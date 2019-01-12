@@ -42,43 +42,51 @@ function submitUserInterest($id){
  * @param int $id
  * @param bool $precheck
  */
-function printInterests($id, $precheck){
+function printAdminInterests($id){
     //Query um alle vorhandenen Interessen aufzulisten
     $queryBezeichnung = "SELECT interessen.Bezeichnung, Interessen.InteressenID
                          FROM interessen";
 
-    //casting um ekelige Verhaltensweisen zu minimieren
-    $precheck = (bool)$precheck;
-
     $conn = connectDatabase();
     echo "<form>";
     echo "<fieldset>";
-    if ($precheck == false){
-        foreach ($conn -> query($queryBezeichnung) as $row){
-            echo "<label>";
-            echo "<input type=\"checkbox\" value=".$row['Bezeichnung']."\" name=".$row['Bezeichnung']."\" id=FormsInteresse".$row['InteressenID'].">";
-            print $row['Bezeichnung'];
-            echo "</label>";
-            echo "<br />";
-        }
-    }
-    else {
-        $userinterest = getUserInterestById($id);
-        foreach ($conn->query($queryBezeichnung) as $row) {
-            echo "<label>";
-                if ($userinterest['Interesse'] == $row['InteressenID']){
-                    echo "<input type=\"checkbox\" value=" . $row['Bezeichnung'] . "\" name=" . $row['Bezeichnung'] . "\" id=FormsInteresse" . $row['InteressenID'] . " checked>";
-                }
-                else {
-                    echo "<input type=\"checkbox\" value=" . $row['Bezeichnung'] . "\" name=" . $row['Bezeichnung'] . "\" id=FormsInteresse" . $row['InteressenID'] . ">";
-                }
-            print $row['Bezeichnung'];
-            echo "</label>";
-            echo "<br />";
-        }
+    foreach ($conn -> query($queryBezeichnung) as $row){
+        echo "<label>";
+        echo "<input type=\"checkbox\" value=".$row['Bezeichnung']."\" name=".$row['Bezeichnung']."\" id=FormsInteresse".$row['InteressenID'].">";
+        print $row['Bezeichnung'];
+        echo "</label>";
+        echo "<br />";
     }
     echo "</fieldset>";
     echo "</form>";
 
     $conn = null;
 }
+function printUserinterest ($id) {
+    //Query um alle vorhandenen Interessen aufzulisten
+    $queryBezeichnung = "SELECT interessen.Bezeichnung, Interessen.InteressenID
+                         FROM interessen";
+    $querySubmit = "Oh dear I hate SQL";
+    $userinterest = getUserInterestById($id);
+    $conn = connectDatabase();
+
+    echo "<form>";
+    echo "<fieldset>";
+    foreach ($conn->query($queryBezeichnung) as $row) {
+        echo "<label>";
+        if ($userinterest['Interesse'] == $row['InteressenID']) {
+            echo "<input type=\"checkbox\" value=" . $row['Bezeichnung'] . "\" name=" . $row['Bezeichnung'] . "\" id=FormsInteresse" . $row['InteressenID'] . " checked>";
+        } else {
+            echo "<input type=\"checkbox\" value=" . $row['Bezeichnung'] . "\" name=" . $row['Bezeichnung'] . "\" id=FormsInteresse" . $row['InteressenID'] . ">";
+        }
+        print $row['Bezeichnung'];
+        echo "</label>";
+        echo "<br />";
+    }
+    echo "</fieldset>";
+    echo "</form>";
+
+    $conn = null;
+}
+
+
