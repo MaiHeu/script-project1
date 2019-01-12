@@ -8,7 +8,7 @@
 
 include_once  'utilities.php';
 
-class Interesse {
+/*class Interesse {
     public $InteressenID;
     public $Bezeichnung;
 }
@@ -71,7 +71,7 @@ class InteressePresentation
 
     }
 }
-$iRepository =new InteresseRepository();
+$iRepository =new InteresseRepository();*/
 /** @var Interesse $value */
 //Herrn Gütling fragen wie man $value in ein Interesse-Objekt wandelt.
 foreach ($iRepository->SucheAlle(null) as $value){
