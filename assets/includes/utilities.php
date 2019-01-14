@@ -4,9 +4,11 @@
  * User: Maik
  * Date: 19.12.2018
  * Funktionen, die das Projekt erleichtern
+ * TODO:PHP Doc erstellen und modifizieren
+ * TODO: Funktionen in die Entsprechenen Klassen Münzen
  */
 
-include_once 'databaseconnect.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . 'assets/includes/databaseconnect.php';
 
 /**
  * Diese Funktion nimmt eine ID entgegen und gibt ein Datenbankobjekt zurück, die die InteressenIDs des Users enthält
@@ -30,8 +32,16 @@ function getUserInterestById ($id){
 function submitUserInterest($id){
     /** TODO:
      *   - SQL Statement schreiben um die ausgewählten Interessen in userinteressen zu schreiben
-     *   - Submit Button für Forms
-     *   - Siehe https://stackoverflow.com/questions/20738329/how-to-call-a-php-function-on-the-click-of-a-button
+     *
+     * Einfach alle Tuples Löschen und neu einfügen, einfachste lösung:
+     *  DELETE FROM `userinteressen` WHERE `User` = 1
+     *
+         foreach($selectedInteressen as $id) {
+      *  INSERT INTO `userinteressen`
+      *  SET `User`= 1
+      *  `Interesse`= $id;
+      *  }
+     * TODO: -Submitbutton Schreiben
      */
 }
 
@@ -41,6 +51,7 @@ function submitUserInterest($id){
  * Dabei wird die ID verwendet, um bei der Auflistung der Interessen bereits ausgewählte Interessen als checked zu markieren
  * @param int $id
  * @param bool $precheck
+ * TODO: auf die neue Klassenstruktur ummünzen
  */
 function printAdminInterests($id){
     //Query um alle vorhandenen Interessen aufzulisten
@@ -62,6 +73,8 @@ function printAdminInterests($id){
 
     $conn = null;
 }
+
+/* TODO: auf die neue Klassenstruktur ummünzen*/
 function printUserinterest ($id) {
     //Query um alle vorhandenen Interessen aufzulisten
     $queryBezeichnung = "SELECT interessen.Bezeichnung, Interessen.InteressenID

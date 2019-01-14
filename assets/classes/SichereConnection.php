@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Maik
- * Date: 12.01.2019
- * Time: 14:58
+ * Klasse um das öffnen und Schließen der Datenbankconnection zu vereinfachen
+ * TODO:PHP Doc erstellen und modifizieren
  */
 
 class SichereConnection
@@ -11,7 +11,7 @@ class SichereConnection
     public $warda;
     public $connection;
 
-    public function Set($con)
+    private function Set($con)
     {
         $this->warda = ($con!=null);
         if(!$this->warda)
@@ -21,7 +21,7 @@ class SichereConnection
         $this->connection = $con;
     }
 
-    public function Ende(){
+    private function Ende(){
         if(!$this->warda){
             $this->connection = null;
         }

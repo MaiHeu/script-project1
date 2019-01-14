@@ -6,6 +6,11 @@
  * Time: 14:55
  */
 
+/**
+ *  Strukturklasse für Interessen
+ *  @var Interesse $Bezeichnung
+ *  @var Interesse $InteressenID
+ */
 class Interessen
 {
     public $InteressenID;
