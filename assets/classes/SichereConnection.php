@@ -8,16 +8,17 @@
 
 class SichereConnection
 {
-    public $warda;
+    public $hasConnection;
     public $connection;
 
     /**
+     * Handelt ein PDO Objekt bzw erzeugt eines, wenn die übergebene Variable NULL ist
      * @param $con
      */
-    private function set($con)
+    private function _set($con)
     {
-        $this->warda = ($con!=null);
-        if(!$this->warda)
+        $this->hasConnection = ($con!=null);
+        if(!$this->hasConnection)
         {
             $con = connectDatabase();
         }
@@ -27,21 +28,21 @@ class SichereConnection
     /**
      *
      */
-    private function end(){
-        if(!$this->warda){
+    private function _end(){
+        if(!$this->hasConnection){
             $this->connection = null;
         }
     }
 
-    public static function execute($con, $text)
+    public static function execute($con, $sqlstatement)
     {
         $sConnection = new SichereConnection();
-        $sConnection->set($con);
+        $sConnection->_set($con);
         $re = array();
-        foreach ($sConnection->connection->query($text) as $value){
+        foreach ($sConnection->connection->query($sqlstatement) as $value){
             $re[] = (object)$value;
         }
-        $sConnection->end(null);
+        $sConnection->_end(null);
         return $re;
     }
 }
