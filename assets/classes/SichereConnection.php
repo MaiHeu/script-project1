@@ -11,7 +11,10 @@ class SichereConnection
     public $warda;
     public $connection;
 
-    private function Set($con)
+    /**
+     * @param $con
+     */
+    private function set($con)
     {
         $this->warda = ($con!=null);
         if(!$this->warda)
@@ -21,21 +24,24 @@ class SichereConnection
         $this->connection = $con;
     }
 
-    private function Ende(){
+    /**
+     *
+     */
+    private function end(){
         if(!$this->warda){
             $this->connection = null;
         }
     }
 
-    public static function Ausfuehren($con,$text)
+    public static function execute($con, $text)
     {
         $sConnection = new SichereConnection();
-        $sConnection->Set($con);
+        $sConnection->set($con);
         $re = array();
         foreach ($sConnection->connection->query($text) as $value){
             $re[] = (object)$value;
         }
-        $sConnection->Ende(null);
+        $sConnection->end(null);
         return $re;
     }
 }

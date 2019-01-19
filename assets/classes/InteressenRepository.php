@@ -13,24 +13,24 @@ class InteressenRepository
      * @param $connection
      * @return array
      */
-    public function SucheAlle($connection)
+    public function printAllInterest($connection)
     {
-        return SichereConnection::Ausfuehren($connection, "SELECT interessen.Bezeichnung, Interessen.InteressenID
+        return SichereConnection::execute($connection, "SELECT interessen.Bezeichnung, Interessen.InteressenID
          FROM interessen");
     }
 
     /**
      * @param $connection
-     * @param $benutzer
+     * @param $user
      * @return array
      */
-    public function SucheFuerBenutzer($connection, $benutzer)
+    public function printUserInterest($connection, $user)
     {
-        return SichereConnection::Ausfuehren($connection, "SELECT interessen.Bezeichnung, Interessen.InteressenID
+        return SichereConnection::execute($connection, "SELECT interessen.Bezeichnung, Interessen.InteressenID
                           FROM interessen WHERE interessen.InterssenID IN (
                           SELECT userinteressen.Interesse
                           FROM userinteressen
-                          WHERE userinteressen.User = '$benutzer->BenutzerID'
+                          WHERE userinteressen.User = '$user->UserID'
                          )");
     }
 }

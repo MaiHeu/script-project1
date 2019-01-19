@@ -10,24 +10,7 @@
 
 include_once $_SERVER['DOCUMENT_ROOT'] . 'assets/includes/databaseconnect.php';
 
-/**
- * Diese Funktion nimmt eine ID entgegen und gibt ein Datenbankobjekt zurück, die die InteressenIDs des Users enthält
- * @param $id
- * @return array //InteresseIDs von $id
- */
-function getUserInterestById ($id){
-    //Query um festzustellen, welche Interessen $id bereits ausgewählt hat
-    $queryGetInterests = "SELECT userinteressen.Interesse
-                          FROM userinteressen
-                          WHERE userinteressen.User = '$id'";
-    $conn = connectDatabase();
-    $save = array();
-    foreach ($conn -> query($queryGetInterests) as $row){
-        $save += $row;
-    }
-    $conn = null;
-    return $save;
-}
+
 
 function submitUserInterest($id){
     /** TODO:

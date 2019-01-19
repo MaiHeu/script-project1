@@ -8,5 +8,16 @@
 
 class UserRepository
 {
-
+    /**
+     * Gibt Vorname und Nachname in einem Array zurück
+     * @param $id
+     * @param $connection
+     * @return array
+     */
+    public function getUserNameByID ($id, $connection)
+    {
+        return SichereConnection::execute($connection, "SELECT user.Vorname, user.Nachname
+                                          FROM user
+                                          WHERE user.ID ='$id'");
+    }
 }
